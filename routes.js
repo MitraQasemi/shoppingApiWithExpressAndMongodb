@@ -1,3 +1,5 @@
+const productDataModel = require('./model.js');
+
 const formidable = require('formidable');
 const url = require('url');
 //express 
@@ -8,20 +10,6 @@ module.exports = router;
 const bodyParser = require('body-parser');
 router.use(bodyParser.urlencoded({ extended: false }));
 router.use(bodyParser.json());
-//database
-const mongoose = require('mongoose');
-mongoose.connect("mongodb://localhost/products");
-const Schema = mongoose.Schema;
-const productData = new Schema({
-    name: String,
-    description: String,
-    quantity: String,
-    category: String,
-    image: [],
-    description: String,
-    price: String
-})
-const productDataModel = mongoose.model('products', productData);
 //Routes
 //list
 router.get("/product", (req, res, next) => {
